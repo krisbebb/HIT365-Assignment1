@@ -1,6 +1,10 @@
 #include <stdio.h>
 
 char prompt(void);
+float calc_manager(void);
+float calc_hourly(void);
+float calc_commission(void);
+float calc_pieceworker(void);
 
 
 int main(void){
@@ -15,6 +19,7 @@ int main(void){
   float hourly_wages = 0;
   float commission_wages = 0;
   float piece_wages = 0;
+  float temp_wage = 0;
 
   char emp_type;
   int finish = 0;
@@ -23,7 +28,11 @@ int main(void){
     emp_type = prompt();
     switch(emp_type) {
       case '1':
-        printf("Manager");
+        temp_wage = calc_manager();
+        manager_wages += temp_wage;
+        total_wages += temp_wage;
+        manager_emps++;
+        total_emps++;
         break;
       case '2':
         break;
@@ -55,4 +64,22 @@ int main(void){
 
   getchar();
   return paycode[0];
+}
+
+float calc_manager(void){
+  float wage;
+  printf("Enter weekly salary for manager: ");
+  scanf("%f", &wage);
+  printf("Manager salary of $%.2f\n", wage);
+  return wage;
+}
+float calc_hourly(void){
+  return 0;
+
+}
+float calc_commission(void){
+  return 0;
+}
+float calc_pieceworker(void){
+  return 0;
 }
