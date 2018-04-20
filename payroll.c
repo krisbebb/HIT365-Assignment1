@@ -149,5 +149,46 @@ float calc_commission(void){
   return total;
 }
 float calc_pieceworker(void){
-  return 0;
+  float rate_item1 = 22.50;
+  float rate_item2 = 24.50;
+  float rate_item3 = 26.00;
+  int amt_item1 = 0;
+  int amt_item2 = 0;
+  int amt_item3 = 0;
+
+  float pay_item1 = 0;
+  float pay_item2 = 0;
+  float pay_item3 = 0;
+  float total = 0;
+  int valid = 0;
+
+  while (!valid){
+    printf("Enter the number produced of item 1: ");
+    valid = scanf("%d", &amt_item1);
+    getchar();
+
+
+  }
+  valid = 0;
+  while (!valid){
+    printf("Enter the number produced of item 2: ");
+    valid = scanf("%d", &amt_item2);
+    getchar();
+  }
+
+  valid = 0;
+  while (!valid){
+    printf("Enter the number produced of item 3: ");
+    valid = scanf("%d", &amt_item3);
+    getchar();
+  }
+  pay_item1 = amt_item1 * rate_item1;
+  pay_item2 = amt_item2 * rate_item2;
+  pay_item3 = amt_item3 * rate_item3;
+
+  total = pay_item1 + pay_item2 + pay_item3;
+
+  printf("Pieceworker wage: $%.2f (items 1 $%.2f, items 2 $%.2f, items 3 $%.2f)\n", total, pay_item1, pay_item2, pay_item3);
+
+  return total;
 }
