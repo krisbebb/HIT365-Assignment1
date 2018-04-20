@@ -35,10 +35,25 @@ int main(void){
         total_emps++;
         break;
       case '2':
+        temp_wage = calc_hourly();
+        hourly_wages += temp_wage;
+        total_wages += temp_wage;
+        hourly_emps++;
+        total_emps++;
         break;
       case '3':
+        temp_wage = calc_commission();
+        commission_wages += temp_wage;
+        total_wages += temp_wage;
+        commission_emps++;
+        total_emps++;
         break;
       case '4':
+        temp_wage = calc_pieceworker();
+        piece_wages += temp_wage;
+        total_wages += temp_wage;
+        piece_emps++;
+        total_emps++;
         break;
         case 'Z':
           printf("You entered too many characters. Please only enter '1' for manager, '2' for hourly, '3' for commission, '4' for pieceworker, or 'Q' to quit and see totals.\n");
@@ -74,7 +89,32 @@ float calc_manager(void){
   return wage;
 }
 float calc_hourly(void){
-  return 0;
+
+  int hours = 0;
+  int overtime_hours = 0;
+  float fixed_rate = 0;
+  float overtime_rate = 0;
+  float fixed_total = 0;
+  float overtime_total = 0;
+  float total = 0;
+
+  printf("Enter the hourly wage for the employee: ");
+  scanf("%f", &fixed_rate);
+  printf("Enter hours worked for hourly employee: ");
+  scanf("%d", &hours);
+  if (hours<=40) {
+    fixed_total = hours * fixed_rate;
+    total = fixed_total;
+  } else {
+    fixed_total = (40 * fixed_rate);
+    overtime_rate = 1.5 * fixed_rate;
+    overtime_hours = hours - 40;
+    overtime_total = overtime_rate * overtime_hours;
+
+    total = fixed_total + overtime_total;
+  }
+  printf("Wages are $%.2f ($%.2f regular and $%.2f overtime)\n", total, fixed_total, overtime_total);
+  return total;
 
 }
 float calc_commission(void){
