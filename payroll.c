@@ -118,7 +118,35 @@ float calc_hourly(void){
 
 }
 float calc_commission(void){
-  return 0;
+  float base = 250;
+  float val_A = 0;
+  float val_B = 0;
+  float val_C = 0;
+  float rate_A = .057;
+  float rate_B = .064;
+  float rate_C = .072;
+  float wage_A = 0;
+  float wage_B = 0;
+  float wage_C = 0;
+  float comm_total = 0;
+  float total = 0;
+
+
+  printf("Enter the sales value of Item A: ");
+  scanf("%f", &val_A);
+  printf("Enter the sales value of Item B: ");
+  scanf("%f", &val_B);
+  printf("Enter the sales value of Item C: ");
+  scanf("%f", &val_C);
+  wage_A = val_A * rate_A;
+  wage_B = val_B * rate_B;
+  wage_C = val_C * rate_C;
+
+  comm_total = wage_A + wage_B + wage_C;
+  total = base + comm_total;
+  printf("Commission wage is $%.2f ($%.2f base + $%.2f commissions ($%.2f item A, $%.2f item B, $%.2f item C))\n", total, base, comm_total, wage_A, wage_B, wage_C );
+
+  return total;
 }
 float calc_pieceworker(void){
   return 0;
