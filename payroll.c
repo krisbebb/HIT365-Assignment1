@@ -83,11 +83,18 @@ int main(void){
 
 float calc_manager(void){
   float wage;
-  printf("Enter weekly salary for manager: ");
-  scanf("%f", &wage);
+
+  int valid = 0;
+
+  while (!valid){
+    printf("Enter weekly salary for manager: ");
+    valid = scanf("%f", &wage);
+    getchar();
+  }
   printf("Manager salary of $%.2f\n", wage);
   return wage;
 }
+
 float calc_hourly(void){
 
   int hours = 0;
@@ -98,10 +105,19 @@ float calc_hourly(void){
   float overtime_total = 0;
   float total = 0;
 
-  printf("Enter the hourly wage for the employee: ");
-  scanf("%f", &fixed_rate);
-  printf("Enter hours worked for hourly employee: ");
-  scanf("%d", &hours);
+  int valid = 0;
+  while (!valid) {
+    printf("Enter the hourly wage for the employee: ");
+    valid = scanf("%f", &fixed_rate);
+    getchar();
+  }
+  valid = 0;
+  while (!valid){
+    printf("Enter hours worked for hourly employee: ");
+    valid = scanf("%d", &hours);
+    getchar();
+  }
+
   if (hours<=40) {
     fixed_total = hours * fixed_rate;
     total = fixed_total;
@@ -131,13 +147,25 @@ float calc_commission(void){
   float comm_total = 0;
   float total = 0;
 
+  int valid = 0;
 
-  printf("Enter the sales value of Item A: ");
-  scanf("%f", &val_A);
-  printf("Enter the sales value of Item B: ");
-  scanf("%f", &val_B);
-  printf("Enter the sales value of Item C: ");
-  scanf("%f", &val_C);
+  while(!valid) {
+    printf("Enter the sales value of Item A: ");
+    valid = scanf("%f", &val_A);
+    getchar();
+  }
+  valid = 0;
+  while(!valid) {
+    printf("Enter the sales value of Item B: ");
+    valid = scanf("%f", &val_B);
+    getchar();
+  }
+  valid = 0;
+  while(!valid) {
+    printf("Enter the sales value of Item C: ");
+    valid = scanf("%f", &val_C);
+    getchar();
+  }
   wage_A = val_A * rate_A;
   wage_B = val_B * rate_B;
   wage_C = val_C * rate_C;
